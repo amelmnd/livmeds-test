@@ -1,18 +1,27 @@
 import React from 'react';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
+import error403 from '../error/error403';
 
-export default function posts(props) {
-  console.log(props);
+export default function Posts(props) {
+  const { data: session } = useSession();
+
   return (
     <div>
-      <h1>ALL POST</h1>
-      {props.posts?.map((post) => (
-        <div key={post.id}>
-          <Link href={`/posts/${post.id}`}>
-            <h2>{post.title}</h2>
-          </Link>
+      {!session ? (
+        error403()
+      ) : (
+        <div>
+          <h1>ALL POST</h1>
+          {props.posts?.map((post) => (
+            <div key={post.id}>
+              <Link href={`/posts/${post.id}`}>
+                <h2>{post.title}</h2>
+              </Link>
+            </div>
+          ))}
         </div>
-      ))}
+      )}
     </div>
   );
 }

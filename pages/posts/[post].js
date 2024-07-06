@@ -1,17 +1,27 @@
 import React from 'react';
+import { useSession } from 'next-auth/react';
+import error403 from '../error/error403';
 
-export default function post(props) {
+export default function Post(props) {
+  const { data: session } = useSession();
+
   return (
     <div>
-      <h1> {props.postData.title}</h1>
-      <p>{props.postData.body}</p>
-      <h2>Comments</h2>
-      {props.commentsData.map((comment) => (
-        <div key={comment.id}>
-          <h3>{comment.email}</h3>
-          <p>{comment.body}</p>
+      {!session ? (
+        error403()
+      ) : (
+        <div>
+          <h1> {props.postData.title}</h1>
+          <p>{props.postData.body}</p>
+          <h2>Comments</h2>
+          {props.commentsData.map((comment) => (
+            <div key={comment.id}>
+              <h3>{comment.email}</h3>
+              <p>{comment.body}</p>
+            </div>
+          ))}
         </div>
-      ))}
+      )}
     </div>
   );
 }
