@@ -1,8 +1,15 @@
-import Head from 'next/head'
-
-import { signIn } from 'next-auth/react';
+'use client';
+import Head from 'next/head';
+import { signIn, useSession } from 'next-auth/react';
+import posts from './posts';
 
 export default function Home() {
+  const { data: session } = useSession();
+
+  if (session) {
+    console.log(session);
+  }
+
   return (
     <div>
       <Head>
@@ -13,13 +20,15 @@ export default function Home() {
         />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <div>
-        <h1>Sign in</h1>
+      {!session.user ? (
         <div>
+          <h1>Sign in</h1>
           <button onClick={() => signIn('github')}>Sign in with GitHub</button>
           <button onClick={() => signIn('google')}>Sign in with Google</button>
         </div>
-      </div>
+      ) : (
+        posts()
+      )}
     </div>
   );
 }
