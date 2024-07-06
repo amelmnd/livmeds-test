@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 export default function posts(props) {
   console.log(props);
@@ -7,7 +8,9 @@ export default function posts(props) {
       <h1>ALL POST</h1>
       {props.posts?.map((post) => (
         <div key={post.id}>
-          <h2>{post.title}</h2>
+          <Link href={`/posts/${post.id}`}>
+            <h2>{post.title}</h2>
+          </Link>
         </div>
       ))}
     </div>
