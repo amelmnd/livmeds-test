@@ -4,11 +4,11 @@ import { useSession } from 'next-auth/react';
 import error403 from '../error/error403';
 
 export default function Posts(props) {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
 
   return (
     <div>
-      {!session ? (
+      {status != 'authenticated' ? (
         error403()
       ) : (
         <div>
