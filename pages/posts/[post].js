@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSession } from 'next-auth/react';
 import error403 from '../error/error403';
+import styles from '../../styles/Post.module.css';
 
 export default function Post(props) {
   const { data: session, status } = useSession();
@@ -12,14 +13,16 @@ export default function Post(props) {
       ) : (
         <div>
           <h1> {props.postData.title}</h1>
-          <p>{props.postData.body}</p>
-          <h2>Comments</h2>
-          {props.commentsData.map((comment) => (
-            <div key={comment.id}>
-              <h3>{comment.email}</h3>
-              <p>{comment.body}</p>
-            </div>
-          ))}
+          <p className={styles.bodyPost}>{props.postData.body}</p>
+          <div>
+            <h3>Comments</h3>
+            {props.commentsData.map((comment) => (
+              <div key={comment.id}>
+                <p className={styles.emailComment}>{comment.email}</p>
+                <p className={styles.bodyComment}>{comment.body}</p>
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>

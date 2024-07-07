@@ -1,0 +1,18 @@
+.allPosts {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+
+}
+
+.cardPost {
+	display: flex;
+	/* flex-direction: column; */
+    width: calc(33.333% - 20px);
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 40px 0px;
+    border-radius: 5px;
+}
