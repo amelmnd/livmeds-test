@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import error403 from '../error/error403';
+import style from '../../styles/Posts.module.css';
 
 export default function Posts(props) {
   const { data: session, status } = useSession();
@@ -13,13 +14,15 @@ export default function Posts(props) {
       ) : (
         <div>
           <h1>ALL POST</h1>
-          {props.posts?.map((post) => (
-            <div key={post.id}>
-              <Link href={`/posts/${post.id}`}>
-                <h2>{post.title}</h2>
-              </Link>
-            </div>
-          ))}
+          <div className={style.allPosts}>
+            {props.posts?.map((post) => (
+              <div key={post.id} className={style.cardPost}>
+                <Link href={`/posts/${post.id}`}>
+                  <h2>{post.title}</h2>
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>
