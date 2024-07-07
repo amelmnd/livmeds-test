@@ -1,0 +1,10 @@
+.emailComment {
+    color: #F984B7;
+    font-style: italic;
+    text-decoration: underline;
+}
+
+.bodyComment {
+    font-style: italic;
+    color: #0E2667;
+}

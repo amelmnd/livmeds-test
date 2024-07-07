@@ -1,0 +1,33 @@
+
+.buttonLogin{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.buttonLogin button
+{
+	color: rgb(238, 238, 238);
+	border: none;
+	width: max-content;
+	padding: 1rem 2rem;
+	border-radius: 15px;
+}
+
+.googleLogin
+{
+    background-color: rgb(219, 74, 57);
+}
+.gitHubLogin
+{
+	background-color: rgb(51, 51, 51);
+}
+
+.icon
+{
+	font-size: 20px;
+	padding: 5px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
