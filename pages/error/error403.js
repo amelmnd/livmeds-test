@@ -1,9 +1,5 @@
 import React from 'react';
 
-export default function error403() {
-  return (
-    <div>
-      <h1>403 Forbidden</h1>
-    </div>
-  );
+export default function Error403() {
+  return <h1>403 Forbidden</h1>;
 }
