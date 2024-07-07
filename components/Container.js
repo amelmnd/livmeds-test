@@ -21,7 +21,12 @@ export default function Container({ children }) {
           {status != 'authenticated' ? (
             <Link href='/'>login</Link>
           ) : (
-            <Link href='/posts'>All posts</Link>
+            <>
+              <Link href='/posts'>All posts</Link>
+              <Link href='/' onClick={() => signOut({ callbackUrl: '/' })}>
+                Sign out
+              </Link>
+            </>
           )}
         </nav>
       </header>
