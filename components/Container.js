@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { useSession, signOut } from 'next-auth/react';
 import Head from 'next/head';
 import style from '../styles/Container.module.css';
+import Image from 'next/image';
+import logo from '../public/logo.jpg';
 
 export default function Container({ children }) {
   const { data: session, status } = useSession();
@@ -20,10 +22,22 @@ export default function Container({ children }) {
       <header>
         <nav className={style.nav}>
           {status != 'authenticated' ? (
-            <Link href='/'>Login</Link>
+            <>
+              <Image
+                src={logo} // image importer
+                width='30' //largeur réel de l'image
+                heigth='30' //hauteur réel de l'image
+              />
+              <Link href='/'>Login</Link>
+            </>
           ) : (
             <>
               <Link href='/posts'>All posts</Link>
+              <Image
+                src={logo} // image importer
+                width='30' //largeur réel de l'image
+                heigth='30' //hauteur réel de l'image
+              />
               <Link href='/' onClick={() => signOut({ callbackUrl: '/' })}>
                 Sign out
               </Link>
